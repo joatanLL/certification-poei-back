@@ -26,9 +26,9 @@ public class ChannelService {
 			csr.save(channel);
 		}
 		
-		public void deleteChannel(Channel channel) {
+		public void deleteChannel(Long id) {
 			
-			csr.delete(channel);
+			csr.deleteById(id);
 		}
 		
 		public void StringChannel(Channel channel) {

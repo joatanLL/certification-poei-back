@@ -25,9 +25,9 @@ public class MessageService {
 		msr.save(message);
 	}
 	
-	public void deleteMessage(Message message) {
+	public void deleteMessage(Long id) {
 		
-		msr.delete(message);
+		msr.deleteById(id);
 	}
 	
 	public void StringMessage(Message message) {

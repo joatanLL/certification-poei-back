@@ -1,10 +1,10 @@
 DROP TABLE IF EXISTS user_channel ;
 DROP TABLE IF EXISTS messages;
 DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS roles;
-DROP TABLE IF EXISTS canaux;
+DROP TABLE IF EXISTS role;
+DROP TABLE IF EXISTS channel;
 
-CREATE TABLE canaux(
+CREATE TABLE channel(
     id INT(20) PRIMARY KEY AUTO_INCREMENT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
     description TEXT,
@@ -12,33 +12,33 @@ CREATE TABLE canaux(
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE roles(
+CREATE TABLE role(
     id INT(20) PRIMARY KEY AUTO_INCREMENT,
     role VARCHAR(255)
 );
 
-CREATE TABLE users(
+CREATE TABLE user(
     id INT(20) PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(100) NOT NULL,
     role_id INT(20),
-    CONSTRAINT fk_user_role FOREIGN KEY (role_id) REFERENCES roles(id)
+    CONSTRAINT fk_user_role FOREIGN KEY (role_id) REFERENCES role(id)
 );
 
-CREATE TABLE messages(
+CREATE TABLE message(
     id INT(20) PRIMARY KEY AUTO_INCREMENT,
     content TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     canal_id INT(20),
     user_id INT(20),
-    CONSTRAINT fk_message_canal FOREIGN KEY (canal_id) REFERENCES canaux(id),
-    CONSTRAINT fk_message_user FOREIGN KEY (user_id) REFERENCES users(id)
+    CONSTRAINT fk_message_canal FOREIGN KEY (canal_id) REFERENCES channel(id),
+    CONSTRAINT fk_message_user FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 CREATE TABLE user_channel(
     id INT(20) PRIMARY KEY AUTO_INCREMENT,
     canal_id INT(20),
     user_id INT(20),
-    CONSTRAINT fk_user_canal FOREIGN KEY (canal_id) REFERENCES canaux(id),
+    CONSTRAINT fk_user_canal FOREIGN KEY (canal_id) REFERENCES channel(id),
     CONSTRAINT fk_canal_user FOREIGN KEY (user_id) REFERENCES users(id)
 );

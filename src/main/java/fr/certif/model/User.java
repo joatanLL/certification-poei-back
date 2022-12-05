@@ -21,13 +21,10 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="utilisateur")
+@Table(name="user")
 
 public class User implements Serializable{
 
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = 1L;
 
 		@Id
@@ -39,5 +36,15 @@ public class User implements Serializable{
 		
 		@OneToMany(mappedBy = "user")
 		private List<Message> messages = new ArrayList<Message>();
+
+		public User() {		
+		}
+		
+		public User(String username, List<Message> messages) {		
+			this.username = username;
+			this.messages = messages;
+		}
+		
+		
 
 }

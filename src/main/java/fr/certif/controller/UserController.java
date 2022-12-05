@@ -28,7 +28,7 @@ public class UserController {
 	 * Exemple avec JPA
 	 */
 
-	@GetMapping(path = "/read", // path / url
+	@GetMapping(path = "/list", // path / url
 			produces = { "application/json" } // négociation de contenu / par défaut JSON
 	)
 	public List<User> getUser() {
@@ -41,7 +41,7 @@ public class UserController {
 			consumes = { "application/json" } // négociation de contenu / par défaut JSON
 	)
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public void getTodosJpa(@RequestBody User user) {
+	public void getUserJpa(@RequestBody User user) {
 
 		userService.saveUser(user);
 
@@ -52,7 +52,7 @@ public class UserController {
 	public void deletUser(@PathVariable ("id") Long id) {
 
 		userService.deleteUser(id);
-		System.out.println("todolist effacé");
+		System.out.println("utilisateur effacé");
 
 	}
 }

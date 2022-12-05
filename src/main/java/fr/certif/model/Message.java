@@ -32,11 +32,7 @@ public class Message implements Serializable {
 	
 	@ManyToOne (fetch=FetchType.LAZY)
 	private User user;
-	
-	
-	
-	
-	
+
 	
 
 }
