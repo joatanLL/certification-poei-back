@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.certif.model.Message;
+import fr.certif.model.MessageJson;
 import fr.certif.service.MessageService;
 
 @RestController
@@ -40,8 +41,9 @@ public class MessageController {
 			consumes = { "application/json" } // négociation de contenu / par défaut JSON
 	)
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public void getMessageJpa(@RequestBody Message message) {
-
+	public void getMessageJpa(@RequestBody MessageJson message) {
+		
+		System.out.println(message);
 		messageService.saveMessage(message);
 
 	}

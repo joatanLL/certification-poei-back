@@ -34,7 +34,7 @@ public class User implements Serializable{
 		@Column(nullable = false, length = 20, name ="username")
 		private String username;
 		
-		@OneToMany(mappedBy = "user")
+		@OneToMany(mappedBy = "user" )
 		private List<Message> messages = new ArrayList<Message>();
 
 		public User() {		

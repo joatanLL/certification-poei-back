@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -27,12 +28,14 @@ public class Message implements Serializable {
 	@Column(nullable = false, length= 255, name="content")
 	private String content;
 	
-	@ManyToOne (fetch=FetchType.LAZY)
+	@ManyToOne (fetch=FetchType.EAGER)
+	@JoinColumn(name="channel_id")
 	private Channel channel;
 	
-	@ManyToOne (fetch=FetchType.LAZY)
+	@ManyToOne (fetch=FetchType.EAGER)
+	@JoinColumn(name="user_id")
 	private User user;
-
 	
+		
 
 }
