@@ -22,28 +22,30 @@ import fr.certif.service.UserService;
 public class UserController {
 
 	@Autowired
-	UserService userService;
+	UserService us;
 
 	/*
 	 * Exemple avec JPA
 	 */
 
+	//LISTE USER 
 	@GetMapping(path = "/list", // path / url
 			produces = { "application/json" } // négociation de contenu / par défaut JSON
 	)
 	public List<User> getUser() {
 
-		return userService.getAll();
+		return us.getAll();
 
 	}
 
+	
 	@PostMapping(path = "/post", // path / url
 			consumes = { "application/json" } // négociation de contenu / par défaut JSON
 	)
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public void getUserJpa(@RequestBody User user) {
 
-		userService.saveUser(user);
+		us.saveUser(user);
 
 	}
 
@@ -51,7 +53,7 @@ public class UserController {
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public void deletUser(@PathVariable ("id") Long id) {
 
-		userService.deleteUser(id);
+		us.deleteUser(id);
 		System.out.println("utilisateur effacé");
 
 	}

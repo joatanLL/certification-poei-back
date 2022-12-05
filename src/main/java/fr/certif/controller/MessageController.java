@@ -23,11 +23,14 @@ public class MessageController {
 
 	@Autowired
 	MessageService messageService;
+	
+	private final String URL = "/channel";
 
 	/*
 	 * Exemple avec JPA
 	 */
 
+	//LISTE MESSAGE
 	@GetMapping(path = "/list", // path / url
 			produces = { "application/json" } // négociation de contenu / par défaut JSON
 	)
@@ -35,6 +38,12 @@ public class MessageController {
 
 		return messageService.getAll();
 
+	}
+	
+	//AJOUT MESSAGE
+	@GetMapping (path = "/post")
+	public String getMessageAdd() {
+		return URL + "/post";
 	}
 
 	@PostMapping(path = "/post", // path / url

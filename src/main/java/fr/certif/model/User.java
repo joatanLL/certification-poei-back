@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -34,7 +35,7 @@ public class User implements Serializable{
 		@Column(nullable = false, length = 20, name ="username")
 		private String username;
 		
-		@OneToMany(mappedBy = "user" )
+		@OneToMany(mappedBy = "user" , fetch=FetchType.EAGER)
 		private List<Message> messages = new ArrayList<Message>();
 
 		public User() {		

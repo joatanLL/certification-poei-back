@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -28,11 +30,12 @@ public class Message implements Serializable {
 	@Column(nullable = false, length= 255, name="content")
 	private String content;
 	
-	@ManyToOne (fetch=FetchType.EAGER)
+	@ManyToOne ()
 	@JoinColumn(name="channel_id")
 	private Channel channel;
 	
-	@ManyToOne (fetch=FetchType.EAGER)
+	@ManyToOne ()
+	@JsonIgnore
 	@JoinColumn(name="user_id")
 	private User user;
 	

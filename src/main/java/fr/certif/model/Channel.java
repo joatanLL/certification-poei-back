@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 
@@ -34,6 +36,7 @@ public class Channel implements Serializable{
 		private boolean general;
 				
 		@OneToMany(mappedBy = "channel", cascade=CascadeType.ALL)
+		@JsonIgnore
 		private List<Message> messages = new ArrayList<>();
 
 		public long getId() {
