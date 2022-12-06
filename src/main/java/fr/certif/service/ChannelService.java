@@ -26,6 +26,11 @@ public class ChannelService {
 			csr.save(channel);
 		}
 		
+		public void updateChannel(Channel channel) {
+			
+			csr.save(channel);
+		}
+		
 		public void deleteChannel(Long id) {
 			
 			csr.deleteById(id);
