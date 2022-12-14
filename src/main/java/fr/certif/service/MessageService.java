@@ -1,6 +1,7 @@
 package fr.certif.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,11 @@ public class MessageService {
 	public List<Message> getAll(){
 		
 		return msr.findAll();
+	}
+	
+	public List<Message> getMessageByCanal(Long id) {
+		
+		return msr.findByCanal(id);
 	}
 	
 	public void saveMessage(MessageJson messageJson) {
