@@ -45,6 +45,7 @@ public class Message implements Serializable {
 	}
 	
 	@ManyToOne ()
+	@JsonIncludeProperties(value= {"id"})
 	@JoinColumn(name="channel_id")
 	private Channel channel;
 	
