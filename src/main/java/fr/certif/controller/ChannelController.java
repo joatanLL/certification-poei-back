@@ -32,12 +32,6 @@ public class ChannelController {
 	
 	private final String URL = "/channel";
 	
-	//ACCUEIL CHANNEL
-	@RequestMapping (path = "/general", method = RequestMethod.GET)
-	public String getChannels(Model model, @ModelAttribute Channel channel) {
-		model.addAttribute("channel", cs.getAll());
-		return URL + "/general";
-	}
 
 	//LISTE CHANNEL
 	@CrossOrigin("http://localhost:4200")

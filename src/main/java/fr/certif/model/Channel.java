@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
-
+@Data
 @Entity
 @Table(name="channel")
 
@@ -31,38 +31,15 @@ public class Channel implements Serializable{
 		
 		@Column(nullable = false, length = 20, name ="name")
 		private String name;
+		
 			
-		@Column(nullable = true, name ="general")
-		private boolean general;
+		@Column(nullable = false, name ="general")
+		private int general = 0;
 				
 		@OneToMany(mappedBy = "channel", cascade=CascadeType.ALL)
 		@JsonIgnore
 		private List<Message> messages = new ArrayList<>();
 
-		public long getId() {
-			return id;
-		}
-
-		public void setId(long id) {
-			this.id = id;
-		}
-
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-
-		public List<Message> getMessages() {
-			return messages;
-		}
-
-		public void setMessages(List<Message> messages) {
-			this.messages = messages;
-		}
-		
-		
+			
 		
 }

@@ -26,7 +26,17 @@ public class ChannelService {
 	}
 
 	public void saveChannel(Channel channel) {
-		csr.save(channel);
+		if(channel.getGeneral() != 1) {
+			csr.save(channel);
+		} else {
+			System.err.println("Channel General déjà crée!");
+		}
+		
+	}
+	
+	public Channel findGeneral() {
+		return csr.findGeneral().get(0);
+			
 	}
 
 	public void updateChannel(Channel channel) {
@@ -39,7 +49,7 @@ public class ChannelService {
 	}
 
 	public void deleteChannel(Long id) {
-		if (csr.existsById(id)) {
+		if (csr.existsById(id) && csr.findById(id).get().getGeneral() !=1) {
 			csr.deleteById(id);
 		} else {
 			System.out.println("Suppression impossible");
