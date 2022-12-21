@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 
 import lombok.Data;
-
+/*  recuperation de l'id de user et channel  */
 @Data
 public class MessageJson implements Serializable{
 	
