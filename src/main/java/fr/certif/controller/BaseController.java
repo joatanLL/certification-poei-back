@@ -3,6 +3,7 @@ package fr.certif.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ public class BaseController {
 	@Autowired
 	MessageService ms;
 	
+	@CrossOrigin(origins = "http://localhost:4200/", maxAge = 3600)
 	@RequestMapping(path="/general", method=RequestMethod.GET, produces= {"application/json"})
 	public Map<String, Object> getGeneralEndpoint(Model model) {
 		
