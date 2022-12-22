@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +32,7 @@ public class MessageController {
 	 */
 
 	//LISTE MESSAGE
+	@CrossOrigin("http://localhost:4200")
 	@GetMapping(path = "/list", // path / url
 			produces = { "application/json" } // négociation de contenu / par défaut JSON
 	)
@@ -39,17 +41,12 @@ public class MessageController {
 		return messageService.getAll();
 
 	}
-	
-	//AJOUT MESSAGE
-	@GetMapping (path = "/post")
-	public String getMessageAdd() {
-		return URL + "/post";
-	}
 
+	@CrossOrigin("http://localhost:4200")
 	@PostMapping(path = "/post", // path / url
 			consumes = { "application/json" } // négociation de contenu / par défaut JSON
 	)
-	@ResponseStatus(code = HttpStatus.CREATED)
+	@ResponseStatus(code = HttpStatus.OK)
 	public void getMessageJpa(@RequestBody MessageJson message) {
 		
 		System.out.println(message);
@@ -57,12 +54,13 @@ public class MessageController {
 
 	}
 
+	@CrossOrigin("http://localhost:4200")
 	@DeleteMapping(path = "/delete/{id}")
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public void deletUser(@PathVariable ("id") Long id) {
+	@ResponseStatus(code = HttpStatus.OK)
+	public void deleteMessage(@PathVariable ("id") Long id) {
 
 		messageService.deleteMessage(id);
-		System.out.println("utilisateur effacé");
+		System.out.println("message effacé");
 
 	}
 }

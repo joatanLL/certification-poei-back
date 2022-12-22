@@ -17,6 +17,7 @@ import fr.certif.model.Message;
 import fr.certif.service.ChannelService;
 import fr.certif.service.MessageService;
 
+@CrossOrigin(origins = "http://localhost:4200/", maxAge = 3600)
 @RestController
 public class BaseController {
 	
@@ -26,7 +27,7 @@ public class BaseController {
 	@Autowired
 	MessageService ms;
 	
-	@CrossOrigin(origins = "http://localhost:4200/", maxAge = 3600)
+	
 	@RequestMapping(path="/general", method=RequestMethod.GET, produces= {"application/json"})
 	public Map<String, Object> getGeneralEndpoint(Model model) {
 		

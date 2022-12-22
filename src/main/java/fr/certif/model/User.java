@@ -37,7 +37,7 @@ public class User implements Serializable{
 		private String username;
 		
 		@OneToMany(mappedBy = "user" , fetch=FetchType.EAGER)
-		@JsonIgnore
+		@JsonIncludeProperties(value= {"id", "username"})
 		private List<Message> messages = new ArrayList<Message>();
 
 		public User() {		
